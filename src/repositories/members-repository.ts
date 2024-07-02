@@ -1,6 +1,6 @@
 // Contrato
 
-import { createMemberDto } from 'src/dto/create-member';
+import { createMemberDto } from 'src/infra/http/dto/create-member';
 
 export abstract class MembersRepository {
   abstract create(

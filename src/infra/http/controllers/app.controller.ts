@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
-import { createMemberDto } from './dto/create-member';
-import { MembersRepository } from './repositories/members-repository';
+import { createMemberDto } from '../dto/create-member';
+import { MembersRepository } from '../../../repositories/members-repository';
 
 @Controller('members')
 export class AppController {

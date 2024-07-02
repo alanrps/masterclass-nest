@@ -1,6 +1,6 @@
-import { createMemberDto } from 'src/dto/create-member';
+import { createMemberDto } from 'src/infra/http/dto/create-member';
 import { MembersRepository } from '../members-repository';
-import { PrismaService } from 'src/database/prisma.service';
+import { PrismaService } from '../../database/prisma/prisma.service';
 import { randomUUID } from 'node:crypto';
 import { Injectable } from '@nestjs/common';
 

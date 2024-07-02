@@ -1,73 +1,68 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Ignite 4.0 & MasterClass NestJS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Comandos
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### CLI NEST
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ yarn install
+```sh
+nest -h # Ver as funcionalidades da CLI
+nest new masterclass-nest
 ```
 
-## Running the app
+### Instalação do Prisma
 
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+```sh
+npm i -D prisma
+npx prisma init --datasource-provider SQLite
+npx prisma migrate dev # Cria os modelos definidos no schema
+npm i @prisma/client
+npx prisma studio
 ```
 
-## Test
+### Instalação de Validações
 
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+```sh
+npm install class-validator
+npm install class-transformer
 ```
 
-## Support
+### Testes
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```sh
+npm run test:watch # Verifica modificações nos arquivos de teste
+```
 
-## Stay in touch
+## Como Pensar no Desenvolvimento de Software (Design de Software)
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Princípios Gerais
 
-## License
+- **Pensar antes de sair codando:** 
+  - Pensar na aplicação desconexa do meio externo.
+  - Fazer a aplicação independente do banco de dados e depois conectar como uma camada de persistência de dados.
+  - Diminuir acoplamento.
 
-Nest is [MIT licensed](LICENSE).
+### Domain-Driven Design (DDD)
+
+- **Domínio, Conversação, Agregates, Bonded Contents**
+- **Regras de Negócio**
+- **Casos de Uso**
+  - Diagramas de caso de uso.
+  - Diagramas de sequência.
+- **Value Object (DDD)**
+  - Uma entidade não precisa ser uma tabela no banco de dados, ela pode ser várias.
+  - Pode-se pegar uma propriedade e criar uma classe separada para fazer validações e formatações, evitando sujar o arquivo de notificações, pois é algo específico de uma propriedade.
+
+### Infraestrutura
+
+- **Camada Externa:**
+  - Banco de dados.
+  - Conexão com outras APIs.
+
+### Estrutura de Casos de Uso
+
+- **Casos de Uso -> Repositories -> BD**
+
+### Banco de Dados em Memória
+
+- **In Memory Database:**
+  - Criar em memória para agilizar os testes.
